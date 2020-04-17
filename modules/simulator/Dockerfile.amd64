@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
+WORKDIR /app
+COPY ./modules/simulator/*.csproj ./modules/simulator/
+COPY ./ModuleWrapper/*.csproj ./ModuleWrapper/
+WORKDIR /app/modules/simulator
+RUN dotnet restore
+
+WORKDIR /app
+COPY . ./
+RUN dotnet publish -c Release -o /app/out
+
+FROM mcr.microsoft.com/dotnet/core/runtime:2.1-stretch-slim
+WORKDIR /app
+COPY --from=build-env /app/out ./
+COPY /modules/simulator/sampleData.csv ./
+
+RUN useradd -ms /bin/bash moduleuser
+USER moduleuser
+
+ENTRYPOINT ["dotnet", "Simulator.dll"]

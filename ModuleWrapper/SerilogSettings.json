@@ -1,0 +1,24 @@
+﻿{
+  "Serilog": {
+    "Using": [
+      "Serilog.Sinks.Console"
+    ],
+    "MinimumLevel": {
+      "Default": "Debug",
+      "Override": {
+        "Microsoft": "Information",
+        "Microsoft.AspNetCore": "Warning"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "Console"
+      }
+    ],
+    "Enrich": [
+      "FromLogContext",
+      "WithMachineName",
+      "WithThreadId"
+    ]
+  }
+}

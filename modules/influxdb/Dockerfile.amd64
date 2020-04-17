@@ -1,0 +1,1 @@
+FROM registry.hub.docker.com/library/influxdb:1.7

@@ -1,0 +1,57 @@
+﻿{
+  "Databases": [
+    {
+      "Name": "machineInfo",
+      "Measurements": [
+        {
+          "Name": "telemetry",
+          "Tags": [
+            {
+              "Name": "MachineId",
+              "PayloadMapping": "MachineId",
+              "AbandonIfEmpty": false
+            }
+          ],
+          "Fields": [
+            {
+              "Name": "Sin1",
+              "PayloadMapping": "Sin1",
+              "Type": "float",
+              "AbandonIfEmpty": false,
+              "IgnoreIfEmpty": true
+            },
+            {
+              "Name": "Sin2",
+              "PayloadMapping": "Sin2",
+              "Type": "float",
+              "AbandonIfEmpty": false,
+              "IgnoreIfEmpty": true
+            },
+            {
+              "Name": "Saw1",
+              "PayloadMapping": "Saw1",
+              "Type": "integer",
+              "AbandonIfEmpty": false,
+              "IgnoreIfEmpty": true
+            },
+            {
+              "Name": "Saw2",
+              "PayloadMapping": "Saw2",
+              "Type": "integer",
+              "AbandonIfEmpty": false,
+              "IgnoreIfEmpty": true
+            },
+            {
+              "Name": "Square",
+              "PayloadMapping": "Square",
+              "Type": "integer",
+              "AbandonIfEmpty": false,
+              "IgnoreIfEmpty": true
+            }
+          ]
+        }
+      ],
+      "TimestampPayloadMapping": "Timestamp"
+    }
+  ]
+}

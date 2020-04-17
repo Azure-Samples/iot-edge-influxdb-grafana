@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
+WORKDIR /app
+COPY ./modules/orchestrator/*.csproj ./modules/orchestrator/
+COPY ./ModuleWrapper/*.csproj ./ModuleWrapper/
+WORKDIR /app/modules/orchestrator
+RUN dotnet restore
+
+WORKDIR /app
+COPY . ./
+RUN dotnet publish -c Debug -o /app/out
+
+FROM mcr.microsoft.com/dotnet/core/runtime:2.1-stretch-slim
+WORKDIR /app
+COPY --from=build-env /app/out ./
+
+RUN useradd -ms /bin/bash moduleuser
+USER moduleuser
+
+ENTRYPOINT ["dotnet", "Orchestrator.dll"]

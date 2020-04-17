@@ -1,8 +1,4 @@
-#ignore config and .env
-config/
-.env
-.vs/
-
+# .NET Core
 project.lock.json
 project.fragment.lock.json
 artifacts/
@@ -34,8 +30,5 @@ artifacts/
 *.scc
 .vs
 
-**/[Bb]in/
-**/[Oo]bj/
-
-**/*.cache
-
+[Bb]in/
+[Oo]bj/

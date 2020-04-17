@@ -1,0 +1,157 @@
+{
+  "$schema-template": "2.0.0",
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {
+              "${CONTAINER_REGISTRY_GROUP}": {
+                "username": "${CONTAINER_REGISTRY_USER_NAME}",
+                "password": "${CONTAINER_REGISTRY_PASSWORD}",
+                "address": "${CONTAINER_REGISTRY_ADDRESS}"
+              }
+            }
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "createOptions": {}
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "createOptions": {
+                "HostConfig": {
+                  "PortBindings": {
+                    "5671/tcp": [
+                      {
+                        "HostPort": "5671"
+                      }
+                    ],
+                    "8883/tcp": [
+                      {
+                        "HostPort": "8883"
+                      }
+                    ],
+                    "443/tcp": [
+                      {
+                        "HostPort": "443"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "modules": {
+          "simulator": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "${MODULES.simulator.debug}",
+              "createOptions": {}
+            }
+          },
+          "orchestrator": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "${MODULES.orchestrator.debug}",
+              "createOptions": {
+                "Env": [
+                  "INFLUX_URL=${INFLUX_URL}",
+                  "INFLUX_USERNAME=${INFLUX_USERNAME}",
+                  "INFLUX_PASSWORD=${INFLUX_PASSWORD}",
+                  "INFLUX_RETENTION_IN_DAYS=${INFLUX_RETENTION_IN_DAYS}"
+                ]
+              }
+            }
+          },
+          "influxdb": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "${MODULES.influxdb.debug}",
+              "createOptions": {
+                "Hostname": "influxdb",
+                "Env": [
+                  "INFLUX_DATABASE=${INFLUX_DATABASE}",
+                  "INLFUX_ADMIN_USER=${INFLUX_ADMIN_USER}",
+                  "INFLUX_ADMIN_PASS=${INFLUX_ADMIN_PASS}"
+                ],
+                "HostConfig": {
+                  "Binds": [
+                    "${INFLUX_BIND}"
+                  ],
+                  "PortBindings": {
+                    "8086/tcp": [
+                      {
+                        "HostPort": "8086"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "grafana": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "${MODULES.grafana.debug}",
+              "createOptions": {
+                "Hostname": "grafana",
+                "Env": [
+                  "GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}",
+                  "GF_LOG_CONSOLE_LEVEL=${GRAFANA_LOG_CONSOLE_LEVEL}"
+                ],
+                "HostConfig": {
+                  "PortBindings": {
+                    "3000/tcp": [
+                      {
+                        "HostPort": "3000"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "simulatorToOrchestrator": "FROM /messages/modules/simulator/outputs/* INTO BrokeredEndpoint(\"/modules/orchestrator/inputs/telemetry\")",
+          "orchestratorToIoTHub": "FROM /messages/modules/orchestrator/outputs/* INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 7200
+        }
+      }
+    }
+  }
+}
