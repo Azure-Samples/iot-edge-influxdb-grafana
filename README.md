@@ -14,6 +14,33 @@ This project two development patterns:
 
 2) InfluxDB and Grafana working on IoT Edge (see `documentation` folder for more specifics on each)
 
+## Contents
+
+Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
+
+| File/folder       | Description                                |
+|-------------------|--------------------------------------------|
+| `documentation` | Details of InfluxDB and Grafana config |
+| `modules`         | IoT Edge module code                       |
+| `ModuleWrapper`   | Dependency Injection and configuration     |
+| `ModuleWrapperTest` | For ModuleWrapper testing                | 
+| `deployment.template.json` | IoT Edge deployment configuration |
+| `.gitignore`      | Define what to ignore at commit time.      |
+| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
+| `README.md`       | This README file.                          |
+| `LICENSE`         | The license for the sample.                |
+
+## Prerequisites
+
+`Azure IoT Edge`
+`.NET Core 2.1`
+`Docker`
+`VS Code`
+`VS Code Azure IoT Tooling Extension`
+
+## Setup
+## Running the sample
+## Key concepts
 
 
 # Contributing
