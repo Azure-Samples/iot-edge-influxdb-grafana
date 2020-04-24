@@ -11,7 +11,7 @@
             "loggingOptions": "",
             "registryCredentials": {
               "${CONTAINER_REGISTRY_GROUP}": {
-                "username": "${CONTAINER_REGISTRY_USER_NAME}",
+                "username": "${CONTAINER_REGISTRY_USERNAME}",
                 "password": "${CONTAINER_REGISTRY_PASSWORD}",
                 "address": "${CONTAINER_REGISTRY_ADDRESS}"
               }
