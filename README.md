@@ -164,6 +164,8 @@ For instructions on setup for these two modules and how they work, see the `docu
 
 To test the full solution, right click on the `deployment.template.json` or `deployment.debug.template.json` and select "Build and Run IoT Edge Solution in Simulator."
 
+To access the grafana dashboard, go to `localhost:3000` and use `username:admin` and `password:admin`.  ()
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
