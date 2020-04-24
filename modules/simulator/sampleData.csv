@@ -1,4 +1,4 @@
-﻿Timestamp,MachineId,Saw1,Saw2,Sin1,Sin2,Square
+﻿Timestamp,MachineId,MachineTemperature,AmbientTemperature,ConveyorBeltSpeed,GearTension,WorkerDetected
 0,XY1,152,19,75,94,0
 0,XY1,160,25,55,111,0
 0,XY1,165,30,43,123,0

@@ -88,11 +88,11 @@
                 var sampleMeasurement = new Measurement()
                 {
                     MachineId = data[1],
-                    Sin1 = data[2],
-                    Sin2 = data[3],
-                    Saw1 = data[4],
-                    Saw2 = data[5],
-                    Square = data[6]
+                    MachineTemperature = data[2],
+                    AmbientTemperature = data[3],
+                    ConveyorBeltSpeed = data[4],
+                    GearTension = data[5],
+                    WorkerDetected = data[6]
                 };
                 return sampleMeasurement;
             }

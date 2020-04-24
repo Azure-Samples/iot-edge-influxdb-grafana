@@ -1,9 +1,9 @@
 {
   "Timestamp": "1582940332052",
   "MachineId": "XYZ",
-  "Sin1": "80.0",
-  "Sin2": "-40.0",
-  "Saw1": "10",
-  "Saw2": "-10",
-  "Square": "1"
+  "MachineTemperature": "80.0",
+  "AmbientTemperature": "-40.0",
+  "ConveyorBeltSpeed": "10",
+  "GearTension": "-10",
+  "WorkerDetected": "1"
 }

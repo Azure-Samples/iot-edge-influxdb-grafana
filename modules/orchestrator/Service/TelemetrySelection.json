@@ -14,36 +14,36 @@
           ],
           "Fields": [
             {
-              "Name": "Sin1",
-              "PayloadMapping": "Sin1",
+              "Name": "MachineTemperature",
+              "PayloadMapping": "MachineTemperature",
               "Type": "float",
               "AbandonIfEmpty": false,
               "IgnoreIfEmpty": true
             },
             {
-              "Name": "Sin2",
-              "PayloadMapping": "Sin2",
+              "Name": "AmbientTemperature",
+              "PayloadMapping": "AmbientTemperature",
               "Type": "float",
               "AbandonIfEmpty": false,
               "IgnoreIfEmpty": true
             },
             {
-              "Name": "Saw1",
-              "PayloadMapping": "Saw1",
+              "Name": "ConveyorBeltSpeed",
+              "PayloadMapping": "ConveyorBeltSpeed",
               "Type": "integer",
               "AbandonIfEmpty": false,
               "IgnoreIfEmpty": true
             },
             {
-              "Name": "Saw2",
-              "PayloadMapping": "Saw2",
+              "Name": "GearTension",
+              "PayloadMapping": "GearTension",
               "Type": "integer",
               "AbandonIfEmpty": false,
               "IgnoreIfEmpty": true
             },
             {
-              "Name": "Square",
-              "PayloadMapping": "Square",
+              "Name": "WorkerDetected",
+              "PayloadMapping": "WorkerDetected",
               "Type": "integer",
               "AbandonIfEmpty": false,
               "IgnoreIfEmpty": true

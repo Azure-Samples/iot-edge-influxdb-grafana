@@ -11,21 +11,21 @@ namespace Simulator.Service
         [JsonProperty(PropertyName = "MachineId")]
         public string MachineId { get; set; }
 
-        [JsonProperty(PropertyName = "Sin1")]
-        public string Sin1 { get; set; }
+        [JsonProperty(PropertyName = "MachineTemperature")]
+        public string MachineTemperature { get; set; }
 
-        [JsonProperty(PropertyName = "Sin2")]
-        public string Sin2 { get; set; }
+        [JsonProperty(PropertyName = "AmbientTemperature")]
+        public string AmbientTemperature { get; set; }
 
-        [JsonProperty(PropertyName = "Saw1")]
-        public string Saw1 { get; set; }
+        [JsonProperty(PropertyName = "ConveyorBeltSpeed")]
+        public string ConveyorBeltSpeed { get; set; }
 
         
-        [JsonProperty(PropertyName = "Saw2")]
-        public string Saw2 { get; set; }
+        [JsonProperty(PropertyName = "GearTension")]
+        public string GearTension { get; set; }
 
-        [JsonProperty(PropertyName = "Square")]
-        public string Square { get; set; }
+        [JsonProperty(PropertyName = "WorkerDetected")]
+        public string WorkerDetected { get; set; }
     }
 }
 
