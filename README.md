@@ -22,6 +22,7 @@ Outline the file contents of the repository. It helps users navigate the codebas
 |-------------------|--------------------------------------------|
 | `documentation` | Details of InfluxDB and Grafana config |
 | `modules`         | IoT Edge module code                       |
+| `images` | Architecture diagram |
 | `ModuleWrapper`   | Dependency Injection and configuration     |
 | `ModuleWrapperTest` | For ModuleWrapper testing                | 
 | `deployment.template.json` | IoT Edge deployment configuration |
@@ -29,6 +30,16 @@ Outline the file contents of the repository. It helps users navigate the codebas
 | `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
 | `README.md`       | This README file.                          |
 | `LICENSE`         | The license for the sample.                |
+
+## Simplified Architecture Diagram
+
+![Architecture Diagram](./images/arch_diagram.PNG)
+
+The simulator module uses Edge Hub routing to send a telemetry message to the orchestrator module.
+
+The orchestrator module uses Edge Hub routing to forward messages to the $upstream Azure IoT Hub.
+
+InfluxDB and Grafana are deployed within the IoT Edge but use REST APIs to communicate.
 
 ### Development machine prerequisites
 
